@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Joanna Delacruz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #2b2d42;
+            color: #e8e9f3;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 217, 192, 0.15) 0%, rgba(139, 92, 246, 0.1) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(43, 45, 66, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #8b9dc3;
+            letter-spacing: -1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: #8b9dc3;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #00d9c0;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: -2px;
+        }
+
+        h1 .gradient-text {
+            background: linear-gradient(135deg, #00d9c0 0%, #a78bfa 50%, #fb7185 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #a8b2d1;
+            max-width: 800px;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .subtitle strong {
+            color: #e8e9f3;
+            font-weight: 600;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1.2rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: #00d9c0;
+            color: #2b2d42;
+            border: 2px solid #00d9c0;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 217, 192, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #00d9c0;
+            border: 2px solid #00d9c0;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 217, 192, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: #8b9dc3;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .content-section {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 5%;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 3rem;
+            color: #00d9c0;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .value-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 217, 192, 0.2);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+        }
+
+        .value-card:hover {
+            border-color: #00d9c0;
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .value-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #00d9c0;
+            margin-bottom: 1rem;
+        }
+
+        .value-card p {
+            color: #a8b2d1;
+            line-height: 1.8;
+        }
+
+        .strengths-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+
+        .strength-card {
+            background: linear-gradient(135deg, rgba(0, 217, 192, 0.05), rgba(139, 92, 246, 0.05));
+            border: 1px solid rgba(0, 217, 192, 0.3);
+            border-radius: 16px;
+            padding: 3rem;
+        }
+
+        .strength-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #e8e9f3;
+            margin-bottom: 1rem;
+        }
+
+        .strength-card p {
+            color: #a8b2d1;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 3rem 0;
+        }
+
+        .tag {
+            padding: 0.8rem 1.5rem;
+            background: rgba(0, 217, 192, 0.1);
+            border: 1px solid #00d9c0;
+            border-radius: 30px;
+            color: #00d9c0;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .journey-section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 217, 192, 0.2);
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 4rem 0;
+        }
+
+        .journey-section p {
+            color: #a8b2d1;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .journey-section em {
+            display: block;
+            margin-top: 2rem;
+            padding: 2rem;
+            background: rgba(0, 217, 192, 0.05);
+            border-left: 4px solid #00d9c0;
+            font-style: italic;
+            color: #00d9c0;
+            font-size: 1.2rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: #8b9dc3;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1.5rem 4%;
+            }
+
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .values-grid,
+            .strengths-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">JD</div>
+        <ul>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="projects.html">Work</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>
+                Joanna<br>
+                <span class="gradient-text">Delacruz</span>
+            </h1>
+            <p class="subtitle">
+                I design <strong>intuitive, accessible experiences</strong> that transform complex 
+                systems into clear, user-centered solutions. From cybersecurity dashboards to 
+                youth-focused mobile applications, I bring technical expertise and creative vision 
+                to every project.
+            </p>
+            <div class="cta-buttons">
+                <a href="projects.html" class="btn btn-primary">
+                    View My Work →
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    Get In Touch
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">SCROLL</div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title">My Purpose</h2>
+        <p style="color: #a8b2d1; font-size: 1.2rem; line-height: 1.9; max-width: 900px;">
+            My career purpose is to apply UX/UI design to bridge creativity and technology, 
+            creating applications that are practical, intuitive, and effective for the people 
+            who rely on them. I aim to help cybersecurity organizations manage alerts and dashboards 
+            to reduce noise and support meaningful decision-making, while also developing solutions 
+            that make essential resources more accessible for youth in need.
+        </p>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title">Core Values</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <h3>Continuous Learning</h3>
+                <p>
+                    I believe in constantly expanding my knowledge and adapting to new technologies, 
+                    staying current with evolving cybersecurity threats, sales methodologies, and 
+                    web development trends.
+                </p>
+            </div>
+            <div class="value-card">
+                <h3>Authentic Communication</h3>
+                <p>
+                    I prioritize transparency and clarity in all professional interactions, bridging 
+                    technical and non-technical audiences with honest, accessible communication.
+                </p>
+            </div>
+            <div class="value-card">
+                <h3>Accessibility for All</h3>
+                <p>
+                    I stand for making information accessible to everyone, creating opportunities for 
+                    individual growth through thoughtful, inclusive design.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title">Core Strengths</h2>
+        <div class="strengths-grid">
+            <div class="strength-card">
+                <h3>Technical Versatility</h3>
+                <p>
+                    My ability to work across cybersecurity, UX/UI design, and business systems 
+                    allows me to identify usability gaps and connections others may overlook, 
+                    enabling me to design user-centered solutions that balance security requirements 
+                    with intuitive interfaces.
+                </p>
+            </div>
+            <div class="strength-card">
+                <h3>Adaptive Problem-Solving</h3>
+                <p>
+                    I excel at quickly understanding complex user and system challenges and translating 
+                    them into practical design solutions, transforming technical complexity into clear, 
+                    usable, and accessible experiences for diverse users.
+                </p>
+            </div>
+        </div>
+
+        <div class="tags">
+            <span class="tag">Hard-Working</span>
+            <span class="tag">Positive</span>
+            <span class="tag">Curious</span>
+            <span class="tag">Detail-Oriented</span>
+            <span class="tag">Adaptable</span>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title">My Journey</h2>
+        <div class="journey-section">
+            <p>
+                Navigating unexpected career transitions, including moving from cybersecurity work 
+                affected by funding uncertainties to business development, has fundamentally shaped 
+                my personal brand. This experience taught me resilience and the importance of 
+                transferable skills.
+            </p>
+            <p>
+                Rather than seeing my diverse background as fragmented, I learned to leverage it as 
+                a strategic advantage. The challenge of pivoting between technical and sales roles 
+                while pursuing my degree forced me to develop exceptional adaptability and strengthened 
+                my ability to communicate value across different contexts.
+            </p>
+            <em>
+                "This journey transformed my perspective from viewing career changes as setbacks 
+                to seeing them as opportunities to build a more versatile, valuable skill set 
+                that serves multiple professional paths."
+            </em>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Joanna Delacruz | UX/UI Designer & Developer</p>
+    </footer>
+</body>
+</html>

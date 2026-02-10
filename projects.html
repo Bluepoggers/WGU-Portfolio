@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work - Joanna Delacruz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #2b2d42;
+            color: #e8e9f3;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 217, 192, 0.15) 0%, rgba(139, 92, 246, 0.1) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(43, 45, 66, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #8b9dc3;
+            letter-spacing: -1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: #8b9dc3;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #00d9c0;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: -2px;
+        }
+
+        h1 .gradient-text {
+            background: linear-gradient(135deg, #00d9c0 0%, #a78bfa 50%, #fb7185 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #a8b2d1;
+            max-width: 800px;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .content-section {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 5%;
+        }
+
+        .projects-grid {
+            display: grid;
+            gap: 4rem;
+        }
+
+        .project {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 217, 192, 0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .project:hover {
+            border-color: #00d9c0;
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 217, 192, 0.2);
+        }
+
+        .project-header {
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(0, 217, 192, 0.05), rgba(139, 92, 246, 0.05));
+            border-bottom: 1px solid rgba(0, 217, 192, 0.2);
+        }
+
+        .project-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #00d9c0;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .project h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #e8e9f3;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 0.6rem 1.2rem;
+            background: rgba(0, 217, 192, 0.1);
+            border: 1px solid #00d9c0;
+            border-radius: 30px;
+            color: #00d9c0;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .tag.secondary {
+            background: rgba(251, 113, 133, 0.1);
+            border-color: #fb7185;
+            color: #fb7185;
+        }
+
+        .project-content {
+            padding: 3rem;
+        }
+
+        .project-description {
+            color: #a8b2d1;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 3rem;
+        }
+
+        .project-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .detail-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #00d9c0;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .detail-section li {
+            color: #a8b2d1;
+            padding: 0.7rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .detail-section li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #00d9c0;
+            font-weight: bold;
+        }
+
+        .skills-section {
+            margin-top: 6rem;
+            padding: 4rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 217, 192, 0.2);
+            border-radius: 20px;
+        }
+
+        .skills-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: #00d9c0;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, rgba(0, 217, 192, 0.05), rgba(139, 92, 246, 0.05));
+            border: 1px solid rgba(0, 217, 192, 0.2);
+            padding: 2rem;
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .skill-category:hover {
+            border-color: #00d9c0;
+            transform: translateY(-3px);
+        }
+
+        .skill-category h3 {
+            font-family: 'Playfair Display', serif;
+            color: #00d9c0;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-category li {
+            color: #a8b2d1;
+            padding: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: #8b9dc3;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1.5rem 4%;
+            }
+
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .project h2 {
+                font-size: 1.8rem;
+            }
+
+            .project-header,
+            .project-content {
+                padding: 2rem;
+            }
+
+            .project-details {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">JD</div>
+        <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html" class="active">Work</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>
+                Featured<br>
+                <span class="gradient-text">Work</span>
+            </h1>
+            <p class="subtitle">
+                Projects spanning cybersecurity operations, UX/UI design, and web development. 
+                Each demonstrates my ability to bridge technical complexity with user-centered design.
+            </p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="projects-grid">
+            <div class="project">
+                <div class="project-header">
+                    <div class="project-number">Project 01</div>
+                    <h2>Security Operations Center (SOC) Analysis</h2>
+                    <div class="project-tags">
+                        <span class="tag">Cybersecurity</span>
+                        <span class="tag">SOC Operations</span>
+                        <span class="tag">Threat Analysis</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <p class="project-description">
+                        Conducted threat monitoring and incident response for enterprise clients at HCC-Consulting, 
+                        analyzing security alerts and coordinating response efforts to protect critical infrastructure. 
+                        This role required balancing technical expertise with clear communication to stakeholders 
+                        across different technical backgrounds.
+                    </p>
+                    <div class="project-details">
+                        <div class="detail-section">
+                            <h3>Key Contributions</h3>
+                            <ul>
+                                <li>Monitored and triaged security alerts from SIEM systems</li>
+                                <li>Analyzed threat patterns and potential vulnerabilities</li>
+                                <li>Documented incident response procedures and findings</li>
+                                <li>Collaborated with technical teams on remediation strategies</li>
+                                <li>Communicated security risks to non-technical stakeholders</li>
+                            </ul>
+                        </div>
+                        <div class="detail-section">
+                            <h3>Tools & Technologies</h3>
+                            <ul>
+                                <li>SIEM platforms (Splunk, QRadar)</li>
+                                <li>Network traffic analysis tools</li>
+                                <li>Incident response frameworks</li>
+                                <li>Security documentation systems</li>
+                                <li>Threat intelligence platforms</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <div class="project-number">Project 02</div>
+                    <h2>Main Street Wash Laundromat Website</h2>
+                    <div class="project-tags">
+                        <span class="tag">Web Design</span>
+                        <span class="tag">UX/UI</span>
+                        <span class="tag secondary">Small Business</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <p class="project-description">
+                        Designed and developed a comprehensive website for a local laundromat, focusing on 
+                        accessibility, clear service information, and mobile-first design to serve the community's 
+                        needs. The project involved understanding the diverse customer base, from busy professionals 
+                        to seniors with varying levels of tech literacy, and creating an interface that works for everyone.
+                    </p>
+                    <div class="project-details">
+                        <div class="detail-section">
+                            <h3>Design Approach</h3>
+                            <ul>
+                                <li>Mobile-responsive design for on-the-go customers</li>
+                                <li>Clear pricing and service information architecture</li>
+                                <li>Accessibility features for diverse customer base</li>
+                                <li>Custom HTML/CSS with Squarespace integration</li>
+                                <li>Easy-to-read typography and high contrast</li>
+                            </ul>
+                        </div>
+                        <div class="detail-section">
+                            <h3>Impact & Features</h3>
+                            <ul>
+                                <li>Improved customer access to business information</li>
+                                <li>Professional online presence for small business</li>
+                                <li>Easy-to-update content management system</li>
+                                <li>Enhanced local community engagement</li>
+                                <li>Location, hours, and contact information prominently displayed</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <div class="project-number">Project 03</div>
+                    <h2>Youth Resources Mobile App (Concept)</h2>
+                    <div class="project-tags">
+                        <span class="tag">UX/UI Design</span>
+                        <span class="tag">Mobile App</span>
+                        <span class="tag secondary">Social Impact</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <p class="project-description">
+                        Conceptual mobile application designed to help youth in need access essential resources 
+                        including housing assistance, educational opportunities, and financial aid programs through 
+                        an intuitive, accessible interface. This project demonstrates my commitment to using design 
+                        for social good and creating solutions for vulnerable populations.
+                    </p>
+                    <div class="project-details">
+                        <div class="detail-section">
+                            <h3>Design Goals</h3>
+                            <ul>
+                                <li>Simplify complex resource navigation for vulnerable populations</li>
+                                <li>Create trust through clear, honest communication</li>
+                                <li>Ensure accessibility for users with varying tech literacy</li>
+                                <li>Provide offline access to critical information</li>
+                                <li>Multi-language support for diverse communities</li>
+                            </ul>
+                        </div>
+                        <div class="detail-section">
+                            <h3>Key Features</h3>
+                            <ul>
+                                <li>Location-based resource finder</li>
+                                <li>Simplified eligibility checker</li>
+                                <li>Step-by-step application guidance</li>
+                                <li>Emergency contact quick access</li>
+                                <li>Privacy-focused design (no account required)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="skills-section">
+            <h2>Technical Skills & Tools</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Cybersecurity</h3>
+                    <ul>
+                        <li>SIEM Tools (Splunk, QRadar)</li>
+                        <li>Threat Analysis</li>
+                        <li>Incident Response</li>
+                        <li>Security Monitoring</li>
+                        <li>Vulnerability Assessment</li>
+                        <li>Documentation</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>UX/UI Design</h3>
+                    <ul>
+                        <li>User Research</li>
+                        <li>Wireframing & Prototyping</li>
+                        <li>Information Architecture</li>
+                        <li>Accessibility Design</li>
+                        <li>Responsive Design</li>
+                        <li>User Testing</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Development</h3>
+                    <ul>
+                        <li>HTML/CSS/JavaScript</li>
+                        <li>Responsive Web Design</li>
+                        <li>Squarespace/CMS</li>
+                        <li>Git Version Control</li>
+                        <li>Web Performance</li>
+                        <li>Cross-browser Testing</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Business</h3>
+                    <ul>
+                        <li>Business Development</li>
+                        <li>Client Communication</li>
+                        <li>Project Management</li>
+                        <li>Data Analysis</li>
+                        <li>Stakeholder Management</li>
+                        <li>Technical Writing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Joanna Delacruz | UX/UI Designer & Developer</p>
+    </footer>
+</body>
+</html>
